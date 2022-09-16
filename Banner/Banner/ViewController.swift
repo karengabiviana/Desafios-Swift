@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     
     let titleLabel = UILabel()
-    let banner = modBanner()
     let childView = childViewController()
     
     override func viewDidLoad() {
