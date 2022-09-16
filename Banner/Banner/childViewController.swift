@@ -63,9 +63,8 @@ class childViewController: UIViewController {
         titleBanner.text = "Venda mais com sua chave Pix na SumUp!"
         titleBanner.font = UIFont.boldSystemFont(ofSize: 18)
         titleBanner.textAlignment = .left
-        titleBanner.numberOfLines = 0
+        titleBanner.numberOfLines = 2
         titleBanner.adjustsFontSizeToFitWidth = true
-        
         
         leftColumn.addSubview(subtitleBanner)
         subtitleBanner.text = "É mais facilidade para suas vendas"
@@ -83,18 +82,22 @@ class childViewController: UIViewController {
     }
     
     func configLabels() {
+        // labels
         titleBanner.translatesAutoresizingMaskIntoConstraints = false
         subtitleBanner.translatesAutoresizingMaskIntoConstraints = false
         
-        // labels
         NSLayoutConstraint.activate([
             titleBanner.topAnchor.constraint(equalTo: leftColumn.topAnchor, constant: 8),
+            titleBanner.leadingAnchor.constraint(equalTo: leftColumn.leadingAnchor),
+            titleBanner.trailingAnchor.constraint(equalTo: leftColumn.trailingAnchor),
             
-            subtitleBanner.topAnchor.constraint(equalTo: titleBanner.bottomAnchor, constant: 8)
+            subtitleBanner.topAnchor.constraint(equalTo: titleBanner.bottomAnchor, constant: 8),
+            subtitleBanner.leadingAnchor.constraint(equalTo: leftColumn.leadingAnchor),
+            subtitleBanner.trailingAnchor.constraint(equalTo: leftColumn.trailingAnchor),
         ])
         
         //button
-    
+        
         buttonBanner.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
