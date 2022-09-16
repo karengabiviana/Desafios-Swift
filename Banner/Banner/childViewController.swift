@@ -70,7 +70,7 @@ class childViewController: UIViewController {
         subtitleBanner.text = "É mais facilidade para suas vendas"
         subtitleBanner.font = UIFont.systemFont(ofSize: 14)
         subtitleBanner.textAlignment = .left
-        subtitleBanner.numberOfLines = 0
+        subtitleBanner.numberOfLines = 2
         subtitleBanner.adjustsFontSizeToFitWidth = true
         
         leftColumn.addSubview(buttonBanner)
@@ -102,7 +102,8 @@ class childViewController: UIViewController {
         
         NSLayoutConstraint.activate([
         
-            buttonBanner.topAnchor.constraint(equalTo: subtitleBanner.bottomAnchor, constant: 16)
+            buttonBanner.topAnchor.constraint(equalTo: subtitleBanner.bottomAnchor, constant: 16),
+            buttonBanner.bottomAnchor.constraint(lessThanOrEqualTo: leftColumn.bottomAnchor, constant: -8)
         ])
     }
 
