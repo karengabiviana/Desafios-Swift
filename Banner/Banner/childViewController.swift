@@ -7,7 +7,7 @@
 
 import UIKit
 
-class childViewController: UIViewController {
+class childViewController: UIView {
     
     let leftColumn = UIView()
     let rightColumn = UIView()
@@ -15,22 +15,25 @@ class childViewController: UIViewController {
     let subtitleBanner = UILabel()
     let buttonBanner = UIButton()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         columns()
         labelsAndButton()
+    
     }
     
-    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     func columns() {
         
-        view.backgroundColor = .lightGray
-        view.layer.cornerRadius = 16
+        backgroundColor = .lightGray
+        layer.cornerRadius = 16
  
-        view.addSubview(leftColumn)
+        addSubview(leftColumn)
 //        leftColumn.backgroundColor = .red
         
-        view.addSubview(rightColumn)
+        addSubview(rightColumn)
         rightColumn.backgroundColor = .magenta
         
         configConstrainsts()
@@ -42,15 +45,17 @@ class childViewController: UIViewController {
         rightColumn.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            leftColumn.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            leftColumn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            leftColumn.trailingAnchor.constraint(equalTo: rightColumn.leadingAnchor, constant: -16),
-            leftColumn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+            heightAnchor.constraint(equalToConstant: 180),
             
-            rightColumn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
+            leftColumn.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            leftColumn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            leftColumn.trailingAnchor.constraint(equalTo: rightColumn.leadingAnchor, constant: -16),
+            leftColumn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            
+            rightColumn.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
             rightColumn.topAnchor.constraint(equalTo: leftColumn.topAnchor),
-            rightColumn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            rightColumn.leadingAnchor.constraint(lessThanOrEqualTo: view.centerXAnchor, constant: 8),
+            rightColumn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            rightColumn.leadingAnchor.constraint(lessThanOrEqualTo: centerXAnchor, constant: 8),
             rightColumn.bottomAnchor.constraint(equalTo: leftColumn.bottomAnchor),
             
         ])
@@ -102,8 +107,8 @@ class childViewController: UIViewController {
         
         NSLayoutConstraint.activate([
         
-            buttonBanner.topAnchor.constraint(equalTo: subtitleBanner.bottomAnchor, constant: 16),
-            buttonBanner.bottomAnchor.constraint(lessThanOrEqualTo: leftColumn.bottomAnchor, constant: -8)
+            buttonBanner.topAnchor.constraint(greaterThanOrEqualTo: subtitleBanner.bottomAnchor, constant: 16),
+            buttonBanner.bottomAnchor.constraint(equalTo: leftColumn.bottomAnchor, constant: -8)
         ])
     }
 
