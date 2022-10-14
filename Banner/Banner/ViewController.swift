@@ -5,21 +5,28 @@
 //  Created by Karen Oliveira on 19/08/22.
 //
 
+import CircuitUI
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
     
     let titleLabel = UILabel()
-    let childView = childViewController()
+    lazy var childView: UIView = {
+        let buttonConfiguration = NotificationBannerView.ButtonConfiguration(title: "Cadastrar Chave Pix", buttonType: .tertiary) {
+            print("Cliquei!")
+        }
+        let image = UIImage(named: "PixKeyBannerIllustration")
+        let configuration = NotificationBannerView.Configuration(title: "Venda mais com sua chave Pix na SumUp!", body: "É mais facilidade para suas vendas", buttonConfiguration: buttonConfiguration, image: image, variant: .promotional )
+        return NotificationBannerView(configuration: configuration)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configTitle()
-//        configBanner()
         addChildVC()
     }
     
-    //Title
     func configTitle() {
         view.addSubview(titleLabel)
         titleLabel.text = "Banner"
@@ -36,10 +43,10 @@ class ViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-        titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-        titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
     
