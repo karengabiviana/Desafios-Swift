@@ -12,7 +12,7 @@ import SwiftUI
 class ViewController: UIViewController {
     
     let titleLabel = UILabel()
-    lazy var childView: UIView = {
+    lazy var bannerView: UIView = {
         let buttonConfiguration = NotificationBannerView.ButtonConfiguration(title: "Cadastrar Chave Pix", buttonType: .tertiary) {
             print("Cliquei!")
         }
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTitle()
-        addChildVC()
+        addBannerView()
     }
     
     func configTitle() {
@@ -50,19 +50,19 @@ class ViewController: UIViewController {
         ])
     }
     
-    func addChildVC() {
-        view.addSubview(childView)
-        setChildVCConstrainsts()
+    func addBannerView() {
+        view.addSubview(bannerView)
+        setBannerViewConstrainsts()
     }
     
-    func setChildVCConstrainsts() {
-        childView.translatesAutoresizingMaskIntoConstraints = false
+    func setBannerViewConstrainsts() {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            childView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            childView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            childView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            childView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            bannerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            bannerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            bannerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            bannerView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 }
