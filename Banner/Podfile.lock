@@ -1,0 +1,38 @@
+PODS:
+  - CircuitUI/Core (0.2.58):
+    - SDSDesignSystem/Core (>= 0.1.0)
+    - SumUpUtilities/Core (~> 0.1.0)
+  - CircuitUI/Swift (0.2.58):
+    - CircuitUI/Core
+    - Kingfisher (~> 5.15.8)
+    - SDSDesignSystem/Core (>= 0.1.0)
+    - SumUpUtilities/Core (~> 0.1.0)
+    - SumUpUtilities/Swift (~> 0.1.0)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - SDSDesignSystem/Core (0.1.1)
+  - SumUpUtilities/Core (0.1.10)
+  - SumUpUtilities/Swift (0.1.10):
+    - SumUpUtilities/Core
+
+DEPENDENCIES:
+  - CircuitUI/Swift (~> 0.2.0)
+
+SPEC REPOS:
+  "git@github.com:sumup/cocoapods-specs.git":
+    - CircuitUI
+    - SDSDesignSystem
+    - SumUpUtilities
+  trunk:
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  CircuitUI: 1d67fc407ae7754bec02800a9153a1e9f14cb7b7
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  SDSDesignSystem: c4e076e4952b41d91c7df2e7c0e86ed9d31eaa35
+  SumUpUtilities: 3b0facee924e6bdb3a8f52439b5125e49b401047
+
+PODFILE CHECKSUM: bde529495fcf69975af945d3e71dc2313afed138
+
+COCOAPODS: 1.11.3

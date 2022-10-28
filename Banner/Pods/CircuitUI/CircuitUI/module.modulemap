@@ -1,0 +1,13 @@
+module CircuitUI_Private {
+    header "Color/CUIColorHelpers.h"
+    header "Color/CUIColorRef.h"
+    header "Labels/Interactive/CUILabelInteractive1.h"
+    header "Labels/Interactive/CUILabelInteractive2.h"
+    header "Helpers/Private/UILabel+SDS.h"
+    header "Resources/UIImage+Resources+Private.h"
+    header "Components/Status/CUIStatusVariantColors.h"
+    header "Components/Private/Hosting Container/CUIInputControlContainerValidationStatusView.h"
+    header "Components/Private/Hosting Container/CUIInputControlContainerValidationResult.h"
+    header "Components/NavigationController/CUINavigationController+Private.h"
+    export *
+}

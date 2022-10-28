@@ -1,0 +1,6 @@
+framework module CircuitUI {
+  umbrella header "CircuitUI-umbrella.h"
+
+  export *
+  module * { export * }
+}
