@@ -23,7 +23,13 @@ class ViewController: UIViewController {
     
     //Configurations
     func configTextField() {
-        //configs
+        textField.textColor = .black
+        textField.backgroundColor = .white
+        textField.borderStyle = .line
+        textField.placeholder = "Put a number here..."
+        textField.clearButtonMode = .whileEditing
+        textField.keyboardType = .numberPad
+        view.addSubview(textField)
         
         setConstraintsTextField()
     }
