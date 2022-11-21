@@ -8,12 +8,51 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let textField = UITextField()
+    let submit = UIButton()
+    let result = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        configTextField()
+        configSubmit()
+        configResult()
+    }
+    
+    //Configurations
+    func configTextField() {
+        //configs
+        
+        setConstraintsTextField()
+    }
+    
+    func configSubmit() {
+        //configs
+        
+        setConstraintsSubmit()
+    }
+    
+    func configResult() {
+        //configs
+        
+        setConstraintsResult()
+    }
+    
+    //Constraints
+    func setConstraintsTextField() {
+        //constraints
     }
 
-
+    func setConstraintsSubmit() {
+        //constraints
+    }
+    
+    func setConstraintsResult() {
+        //constraints
+    }
+    
+   
 }
 
