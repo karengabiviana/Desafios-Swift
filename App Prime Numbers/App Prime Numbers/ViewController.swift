@@ -45,7 +45,9 @@ class ViewController: UIViewController {
     }
     
     func configResult() {
-        //configs
+        result.text = "Prime numbers will be here"
+        result.textColor = .black
+        result.textAlignment = .center
         
         setConstraintsResult()
     }
