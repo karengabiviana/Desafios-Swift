@@ -54,7 +54,14 @@ class ViewController: UIViewController {
     
     //Constraints
     func setConstraintsTextField() {
-        //constraints
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            textField.trailingAnchor.constraint(equalTo: submit.leadingAnchor, constant: -8),
+            textField.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
 
     func setConstraintsSubmit() {
