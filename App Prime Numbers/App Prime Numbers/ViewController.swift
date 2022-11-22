@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         result.text = "Prime numbers will be here"
         result.textColor = .black
         result.textAlignment = .center
+        view.addSubview(result)
         
         setConstraintsResult()
     }
@@ -76,9 +77,15 @@ class ViewController: UIViewController {
     }
     
     func setConstraintsResult() {
-        //constraints
+        result.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            result.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 16),
+            result.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            result.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            result.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+        ])
     }
-    
-   
+
 }
 
