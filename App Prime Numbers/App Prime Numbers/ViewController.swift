@@ -57,15 +57,22 @@ class ViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            textField.trailingAnchor.constraint(equalTo: submit.leadingAnchor, constant: -8),
+            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
             textField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
     func setConstraintsSubmit() {
-        //constraints
+        submit.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            submit.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 16),
+            submit.centerXAnchor.constraint(equalTo: textField.centerXAnchor),
+            submit.heightAnchor.constraint(equalToConstant: 40),
+            submit.widthAnchor.constraint(equalToConstant: 80)
+        ])
     }
     
     func setConstraintsResult() {
