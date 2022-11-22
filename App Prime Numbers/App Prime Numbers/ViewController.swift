@@ -35,7 +35,11 @@ class ViewController: UIViewController {
     }
     
     func configSubmit() {
-        //configs
+        submit.setTitle("Submit", for: .normal)
+        submit.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        submit.backgroundColor = .gray
+        submit.tintColor = .black
+        view.addSubview(submit)
         
         setConstraintsSubmit()
     }
