@@ -12,9 +12,8 @@ class ViewController: UIViewController {
     let field = UITextField()
     let submitButton = UIButton()
     var resultLabel = UILabel()
-    let presenter = Presenter()
     
-//    let presenter: Presenter
+    let presenter = Presenter()
     
     var number: Int {
         guard let fieldText = field.text else {
@@ -23,16 +22,6 @@ class ViewController: UIViewController {
         
         return Int(fieldText) ?? 0
     }
-
-//    init(presenter: Presenter) {
-//        self.presenter = presenter
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,13 +99,15 @@ class ViewController: UIViewController {
     }
     
     func joinedPrimes(primeList: [Int]) -> String {
+        
         primeList.map { String($0) }.joined(separator: ", ")
+        
     }
     
     @objc func conectThings() {
-        //call decomposing(number from getNumberFromField)
+        
         let primeList = presenter.decomposing(number: number)
-        //show the result in result label
+        
         resultLabel.text = joinedPrimes(primeList: primeList)
     }
 
