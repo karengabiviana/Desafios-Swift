@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import ImageIO
 
-class Logic {
+class Presenter {
     
-    func decomposing(number:Int) -> [Int] {
+    func decomposing(number: Int) -> [Int] {
         
         if number > 1 {
             return createDecomposerList(number: number)
@@ -19,7 +18,7 @@ class Logic {
         return []
     }
 
-    func createDecomposerList(number:Int) -> [Int] {
+    func createDecomposerList(number: Int) -> [Int] {
         var primes: [Int] = []
         var workNumber = number
         
