@@ -9,10 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let textField = UITextField()
-    let submit = UIButton()
-    let result = UILabel()
-
+    let field = UITextField()
+    let submitButton = UIButton()
+    var resultLabel = UILabel()
+    
+    let presenter = Presenter()
+    
+    var number: Int {
+        guard let fieldText = field.text else {
+            return 0
+        }
+        
+        return Int(fieldText) ?? 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,68 +33,82 @@ class ViewController: UIViewController {
     
     //Configurations
     func configTextField() {
-        textField.textColor = .black
-        textField.backgroundColor = .white
-        textField.borderStyle = .line
-        textField.placeholder = "Put a number here..."
-        textField.clearButtonMode = .whileEditing
-        textField.keyboardType = .numberPad
-        view.addSubview(textField)
+        field.textColor = .black
+        field.backgroundColor = .white
+        field.borderStyle = .line
+        field.placeholder = "Put a number here..."
+        field.clearButtonMode = .whileEditing
+        field.keyboardType = .numberPad
+        view.addSubview(field)
         
-        setConstraintsTextField()
+        setConstraintsField()
     }
     
     func configSubmit() {
-        submit.setTitle("Submit", for: .normal)
-        submit.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        submit.backgroundColor = .gray
-        submit.tintColor = .black
-        view.addSubview(submit)
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        submitButton.backgroundColor = .gray
+        submitButton.tintColor = .black
+        submitButton.addTarget(self, action: #selector(conectThings), for: .allEvents)
+        view.addSubview(submitButton)
         
         setConstraintsSubmit()
     }
     
     func configResult() {
-        result.text = "Prime numbers will be here"
-        result.textColor = .black
-        result.textAlignment = .center
-        view.addSubview(result)
+        resultLabel.text = "Prime numbers will be here"
+        resultLabel.textColor = .black
+        resultLabel.textAlignment = .center
+        view.addSubview(resultLabel)
         
         setConstraintsResult()
     }
     
     //Constraints
-    func setConstraintsTextField() {
-        textField.translatesAutoresizingMaskIntoConstraints = false
+    func setConstraintsField() {
+        field.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
-            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-            textField.heightAnchor.constraint(equalToConstant: 40)
+            field.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            field.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            field.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            field.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
     func setConstraintsSubmit() {
-        submit.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            submit.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 16),
-            submit.centerXAnchor.constraint(equalTo: textField.centerXAnchor),
-            submit.heightAnchor.constraint(equalToConstant: 40),
-            submit.widthAnchor.constraint(equalToConstant: 80)
+            submitButton.topAnchor.constraint(equalTo: field.bottomAnchor, constant: 16),
+            submitButton.centerXAnchor.constraint(equalTo: field.centerXAnchor),
+            submitButton.heightAnchor.constraint(equalToConstant: 40),
+            submitButton.widthAnchor.constraint(equalToConstant: 80)
         ])
     }
     
     func setConstraintsResult() {
-        result.translatesAutoresizingMaskIntoConstraints = false
+        resultLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            result.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 16),
-            result.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
-            result.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-            result.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            resultLabel.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 16),
+            resultLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            resultLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            resultLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+    }
+    
+    func joinedPrimes(primeList: [Int]) -> String {
+        
+        primeList.map { String($0) }.joined(separator: ", ")
+        
+    }
+    
+    @objc func conectThings() {
+        
+        let primeList = presenter.decomposing(number: number)
+        
+        resultLabel.text = joinedPrimes(primeList: primeList)
     }
 
 }
