@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         field.textColor = .black
         field.backgroundColor = .white
         field.borderStyle = .line
-        field.placeholder = "Put a number here..."
+        field.placeholder = "Put a number here"
         field.clearButtonMode = .whileEditing
         field.keyboardType = .numberPad
         view.addSubview(field)
