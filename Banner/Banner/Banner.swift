@@ -8,45 +8,68 @@
 import Foundation
 import UIKit
 
-class modBanner: UIView {
+class Banner: UIView {
     
-    var view = UIStackView()
+    var mainView = UIStackView()
     var columnLeftStackView = UIStackView()
     var columnRightStackView = UIStackView()
-    var title = UILabel()
-    var body = UILabel()
+    
+    var titleLabel = UILabel()
+    var bodyLabel = UILabel()
+    
+    var titleString = "Testing"
+    var bodyString = "This is a test"
+    var buttonString = "Button"
+    
     var button = UIButton()
+    
     var illustration = UIImageView()
     
     
-    func configStackView() {
-        view.axis = .horizontal
-        view.distribution = .fillProportionally
-        view.spacing = 16
-        view.backgroundColor = .green
+    func configStacksView() {
         
         columnLeftStackView.axis = .vertical
         columnLeftStackView.distribution = .fillProportionally
         columnLeftStackView.spacing = 8
         columnLeftStackView.backgroundColor = .red
+        columnLeftStackView.addArrangedSubview(titleLabel)
+        columnLeftStackView.addArrangedSubview(bodyLabel)
+        columnLeftStackView.addArrangedSubview(button)
         
         columnRightStackView.axis = .vertical
         columnRightStackView.distribution = .fillProportionally
         columnRightStackView.spacing = 8
         columnRightStackView.backgroundColor = .blue
-        
-    }
-    
-    func addElementsStackView() {
-        view.addArrangedSubview(columnLeftStackView)
-        view.addArrangedSubview(columnRightStackView)
-        
-        columnLeftStackView.addArrangedSubview(title)
-        columnLeftStackView.addArrangedSubview(body)
-        columnLeftStackView.addArrangedSubview(button)
-        
         columnRightStackView.addArrangedSubview(illustration)
+        
+        mainView.axis = .horizontal
+        mainView.distribution = .fillProportionally
+        mainView.spacing = 16
+        mainView.backgroundColor = .green
+        mainView.addArrangedSubview(columnLeftStackView)
+        mainView.addArrangedSubview(columnRightStackView)
+        
     }
     
+    func configLabels() {
+        titleLabel.text = titleString
+        
+        bodyLabel.text = bodyString
+        
+    }
+    
+    func configButton() {
+        button.setTitle(buttonString, for: .normal)
+    }
+    
+    func constraints() {
+        NSLayoutConstraint.activate([
+            mainView.topAnchor.constraint(equalTo: topAnchor),
+            mainView.leftAnchor.constraint(equalTo: leftAnchor),
+            mainView.rightAnchor.constraint(equalTo: rightAnchor),
+            mainView.bottomAnchor.constraint(equalTo: bottomAnchor)
+
+        ])
+    }
     
 }

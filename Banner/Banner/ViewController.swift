@@ -5,21 +5,14 @@
 //  Created by Karen Oliveira on 19/08/22.
 //
 
-import CircuitUI
 import UIKit
 import SwiftUI
 
 class ViewController: UIViewController {
     
     let titleLabel = UILabel()
-    lazy var bannerView: UIView = {
-        let buttonConfiguration = NotificationBannerView.ButtonConfiguration(title: "Cadastrar Chave Pix", buttonType: .tertiary) {
-            print("Cliquei!")
-        }
-        let image = UIImage(named: "PixKeyBannerIllustration")
-        let configuration = NotificationBannerView.Configuration(title: "Venda mais com sua chave Pix na SumUp!", body: "É mais facilidade para suas vendas", buttonConfiguration: buttonConfiguration, image: image, variant: .promotional )
-        return NotificationBannerView(configuration: configuration)
-    }()
+    let banner = Banner()
+    var test = Test()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,18 +44,28 @@ class ViewController: UIViewController {
     }
     
     func addBannerView() {
-        view.addSubview(bannerView)
+        view.addSubview(test)
+        view.addSubview(banner)
         setBannerViewConstrainsts()
     }
     
     func setBannerViewConstrainsts() {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        banner.translatesAutoresizingMaskIntoConstraints = false
+        test.translatesAutoresizingMaskIntoConstraints = false
+    
         
         NSLayoutConstraint.activate([
-            bannerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            bannerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            bannerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            bannerView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            banner.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            banner.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            banner.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            banner.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            test.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            test.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            test.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            test.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 }

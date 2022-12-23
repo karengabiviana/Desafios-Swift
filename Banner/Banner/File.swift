@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import UIKit
+
+class Test: UIView {
+    let mainView = UIView()
+    
+    func config() {
+        
+        mainView.backgroundColor = .magenta
+    }
+}
