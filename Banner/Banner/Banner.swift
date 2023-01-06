@@ -8,45 +8,89 @@
 import Foundation
 import UIKit
 
-class modBanner: UIView {
+struct BannerModel {
+    let title: String
+    let subtitle: String
+    let textButton: String
+    let targetButton = "" // What I put here?
+    let image: UIImage
+}
+
+class Banner: UIStackView {
+    //space sizes
+    let spaceSizeTiny = 4
+    let spaceSizeSmall = 8
+    let spaceSizeMedium = 12
+    let spaceSizeLarge = 24
+    //font size
+    let fontSizeTitle = 18
+    //color font
+    let colorFont = UIColor.black
     
-    var view = UIStackView()
-    var columnLeftStackView = UIStackView()
-    var columnRightStackView = UIStackView()
-    var title = UILabel()
-    var body = UILabel()
-    var button = UIButton()
-    var illustration = UIImageView()
+    //Banner elements
+    let image: UIImageView = {
+        let image = UIImageView()
+        return image
+    }()
     
+    let leadingView = UIStackView()
     
-    func configStackView() {
-        view.axis = .horizontal
-        view.distribution = .fillProportionally
-        view.spacing = 16
-        view.backgroundColor = .green
+    // inside leadingView
+    let labelsView = UIStackView()
+    
+    let labelButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(Banner.self, action: #selector(clicked), for: .touchUpInside)
+        return button
+    }()
+    
+    //inside labelsView
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.textAlignment = .left
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.textAlignment = .left
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configViews()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configViews() {
+        leadingView.axis = .vertical
+        leadingView.distribution = .equalSpacing
+        leadingView.alignment = .center
+        leadingView.spacing = CGFloat(spaceSizeMedium)
+        leadingView.addArrangedSubview(labelsView)
+        leadingView.addArrangedSubview(labelButton)
         
-        columnLeftStackView.axis = .vertical
-        columnLeftStackView.distribution = .fillProportionally
-        columnLeftStackView.spacing = 8
-        columnLeftStackView.backgroundColor = .red
-        
-        columnRightStackView.axis = .vertical
-        columnRightStackView.distribution = .fillProportionally
-        columnRightStackView.spacing = 8
-        columnRightStackView.backgroundColor = .blue
+        labelsView.axis = .vertical
+        labelsView.distribution = .equalSpacing
+        labelsView.alignment = .center
+        labelsView.spacing = CGFloat(spaceSizeTiny)
+        leadingView.addArrangedSubview(titleLabel)
+        leadingView.addArrangedSubview(subtitleLabel)
         
     }
     
-    func addElementsStackView() {
-        view.addArrangedSubview(columnLeftStackView)
-        view.addArrangedSubview(columnRightStackView)
-        
-        columnLeftStackView.addArrangedSubview(title)
-        columnLeftStackView.addArrangedSubview(body)
-        columnLeftStackView.addArrangedSubview(button)
-        
-        columnRightStackView.addArrangedSubview(illustration)
+    @objc func clicked() {
+        print("Clicked")
     }
-    
     
 }
