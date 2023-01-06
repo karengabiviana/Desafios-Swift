@@ -41,4 +41,7 @@ class ViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
+    @objc func clicked() {
+        print("Clicked")
+    }
 }
