@@ -11,11 +11,25 @@ import SwiftUI
 class ViewController: UIViewController {
     
     let titleLabel = UILabel()
+    let bannerView = Banner()
+    
+    let titleString = "Pix"
+    let subtitleString = "Cadastre sua chave"
+    let textButtonString = "Cadastre aqui"
+    let bannerImage = UIImage(named: "PixKeyBannerIllustration")
+    let errorImage = UIImage(systemName: "photo")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configTitle()
-
+        addBannerView()
+        
+        bannerView.configure(with: BannerModel(
+            title: titleString,
+            subtitle: subtitleString,
+            textButton: textButtonString,
+            image: bannerImage))
+        
     }
     
     func configTitle() {
@@ -43,5 +57,21 @@ class ViewController: UIViewController {
     }
     @objc func clicked() {
         print("Clicked")
+    }
+    
+    func addBannerView() {
+        view.addSubview(bannerView)
+        setBannerViewConstrainsts()
+    }
+    
+    func setBannerViewConstrainsts() {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            bannerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            bannerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            bannerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            bannerView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+        ])
     }
 }

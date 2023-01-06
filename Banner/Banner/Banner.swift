@@ -13,7 +13,7 @@ struct BannerModel {
     let subtitle: String
     let textButton: String
     let targetButton = "" // What I put here?
-    let image: UIImage
+    let image: UIImage?
 }
 
 class Banner: UIStackView {
@@ -30,6 +30,7 @@ class Banner: UIStackView {
     //Banner elements
     let bannerImage: UIImageView = {
         let image = UIImageView()
+        image.contentMode = .center
         image.clipsToBounds = true
         return image
     }()
@@ -69,6 +70,7 @@ class Banner: UIStackView {
         axis = .horizontal
         distribution = .fillProportionally
         alignment = .center
+        backgroundColor = .magenta
         addArrangedSubview(leadingView)
         addArrangedSubview(bannerImage)
         configViews()
