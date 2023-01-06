@@ -8,68 +8,89 @@
 import Foundation
 import UIKit
 
-class Banner: UIView {
-    
-    var mainView = UIStackView()
-    var columnLeftStackView = UIStackView()
-    var columnRightStackView = UIStackView()
-    
-    var titleLabel = UILabel()
-    var bodyLabel = UILabel()
-    
-    var titleString = "Testing"
-    var bodyString = "This is a test"
-    var buttonString = "Button"
-    
-    var button = UIButton()
-    
-    var illustration = UIImageView()
-    
-    
-    func configStacksView() {
-        
-        columnLeftStackView.axis = .vertical
-        columnLeftStackView.distribution = .fillProportionally
-        columnLeftStackView.spacing = 8
-        columnLeftStackView.backgroundColor = .red
-        columnLeftStackView.addArrangedSubview(titleLabel)
-        columnLeftStackView.addArrangedSubview(bodyLabel)
-        columnLeftStackView.addArrangedSubview(button)
-        
-        columnRightStackView.axis = .vertical
-        columnRightStackView.distribution = .fillProportionally
-        columnRightStackView.spacing = 8
-        columnRightStackView.backgroundColor = .blue
-        columnRightStackView.addArrangedSubview(illustration)
-        
-        mainView.axis = .horizontal
-        mainView.distribution = .fillProportionally
-        mainView.spacing = 16
-        mainView.backgroundColor = .green
-        mainView.addArrangedSubview(columnLeftStackView)
-        mainView.addArrangedSubview(columnRightStackView)
-        
-    }
-    
-    func configLabels() {
-        titleLabel.text = titleString
-        
-        bodyLabel.text = bodyString
-        
-    }
-    
-    func configButton() {
-        button.setTitle(buttonString, for: .normal)
-    }
-    
-    func constraints() {
-        NSLayoutConstraint.activate([
-            mainView.topAnchor.constraint(equalTo: topAnchor),
-            mainView.leftAnchor.constraint(equalTo: leftAnchor),
-            mainView.rightAnchor.constraint(equalTo: rightAnchor),
-            mainView.bottomAnchor.constraint(equalTo: bottomAnchor)
+struct BannerModel {
+    let title: String
+    let subtitle: String
+    let textButton: String
+    let targetButton = "" // What I put here?
+    let image: UIImage
+}
 
-        ])
+class Banner: UIStackView {
+    //space sizes
+    let spaceSizeTiny = 4
+    let spaceSizeSmall = 8
+    let spaceSizeMedium = 12
+    let spaceSizeLarge = 24
+    //font size
+    let fontSizeTitle = 18
+    //color font
+    let colorFont = UIColor.black
+    
+    //Banner elements
+    let image: UIImageView = {
+        let image = UIImageView()
+        return image
+    }()
+    
+    let leadingView = UIStackView()
+    
+    // inside leadingView
+    let labelsView = UIStackView()
+    
+    let labelButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(Banner.self, action: #selector(clicked), for: .touchUpInside)
+        return button
+    }()
+    
+    //inside labelsView
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.textAlignment = .left
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.textAlignment = .left
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configViews()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configViews() {
+        leadingView.axis = .vertical
+        leadingView.distribution = .equalSpacing
+        leadingView.alignment = .center
+        leadingView.spacing = CGFloat(spaceSizeMedium)
+        leadingView.addArrangedSubview(labelsView)
+        leadingView.addArrangedSubview(labelButton)
+        
+        labelsView.axis = .vertical
+        labelsView.distribution = .equalSpacing
+        labelsView.alignment = .center
+        labelsView.spacing = CGFloat(spaceSizeTiny)
+        leadingView.addArrangedSubview(titleLabel)
+        leadingView.addArrangedSubview(subtitleLabel)
+        
+    }
+    
+    @objc func clicked() {
+        print("Clicked")
     }
     
 }
