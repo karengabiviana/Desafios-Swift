@@ -65,6 +65,11 @@ class Banner: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        axis = .horizontal
+        distribution = .fillProportionally
+        alignment = .center
+        addArrangedSubview(leadingView)
+        addArrangedSubview(image)
         configViews()
     }
     
