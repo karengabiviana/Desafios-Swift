@@ -28,8 +28,9 @@ class Banner: UIStackView {
     let colorFont = UIColor.black
     
     //Banner elements
-    let image: UIImageView = {
+    let bannerImage: UIImageView = {
         let image = UIImageView()
+        image.clipsToBounds = true
         return image
     }()
     
@@ -38,7 +39,7 @@ class Banner: UIStackView {
     // inside leadingView
     let labelsView = UIStackView()
     
-    let labelButton: UIButton = {
+    let textButton: UIButton = {
         let button = UIButton()
         button.addTarget(Banner.self, action: #selector(clicked), for: .touchUpInside)
         return button
@@ -69,7 +70,7 @@ class Banner: UIStackView {
         distribution = .fillProportionally
         alignment = .center
         addArrangedSubview(leadingView)
-        addArrangedSubview(image)
+        addArrangedSubview(bannerImage)
         configViews()
     }
     
@@ -83,7 +84,7 @@ class Banner: UIStackView {
         leadingView.alignment = .center
         leadingView.spacing = CGFloat(spaceSizeMedium)
         leadingView.addArrangedSubview(labelsView)
-        leadingView.addArrangedSubview(labelButton)
+        leadingView.addArrangedSubview(textButton)
         
         labelsView.axis = .vertical
         labelsView.distribution = .equalSpacing
@@ -92,6 +93,13 @@ class Banner: UIStackView {
         leadingView.addArrangedSubview(titleLabel)
         leadingView.addArrangedSubview(subtitleLabel)
         
+    }
+    
+    func configure(with viewModel: BannerModel) {
+        titleLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
+        textButton.setTitle(viewModel.textButton, for: .normal)
+        bannerImage.image = viewModel.image
     }
     
     @objc func clicked() {
