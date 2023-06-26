@@ -7,30 +7,48 @@
 
 import Foundation
 
-class Presenter {
-    
-    func decomposing(number: Int) -> [Int] {
-        
-        if number > 1 {
-            return createDecomposerList(number: number)
-        }
-        
-        return []
+protocol PresenterProtocol: AnyObject {
+    func didEdit(newValue: String)
+    func didTapSubmit()
+}
+
+class Presenter: PresenterProtocol {
+
+    func didEdit(newValue: String) {
+
     }
 
-    func createDecomposerList(number: Int) -> [Int] {
-        var primes: [Int] = []
-        var workNumber = number
-        
-        var n = 2
-        while workNumber >= 2 {
-            while workNumber % n == 0 {
-                primes.append(n)
-                workNumber = workNumber / n
-            }
-            n += 1
-        }
-        return primes
+    @objc func didTapSubmit() {
+        // gets number of textfield and convert to Int
+        let number = Int(ViewController().field.text ?? "0") ?? 0
+        //  gets the prime factor of the number
+        let result = primeFactors(of: number)
+        // gets the arrays of Int and transforme in editaded String
+        let strResult = joinedPrimes(primeList: result)
+        // shows in screen the result
+        ViewController().resultLabel.text = strResult
+        // clears the textfield
+        ViewController().field.clearsOnInsertion = true
+
     }
-    
+    // decompoe
+    func primeFactors(of number: Int) -> [Int] {
+        var factors: [Int] = []
+        var dividend = number
+        var divider = 2
+
+        while dividend > 1 {
+            while dividend % divider == 0 {
+                factors.append(divider)
+                dividend /= divider
+            }
+            divider += 1
+        }
+        return factors
+    }
+
+    func joinedPrimes(primeList: [Int]) -> String {
+        primeList.map { String($0) }.joined(separator: ", ")
+
+    }
 }

@@ -13,9 +13,9 @@ class ViewController: UIViewController {
     let titleLabel = UILabel()
     let bannerView = Banner()
     
-    let titleString = "Pix"
-    let subtitleString = "Cadastre sua chave"
-    let textButtonString = "Cadastre aqui"
+    let titleString = "Venda mais com sua chave Pix na SumUp!"
+    let subtitleString = "É mais facilidade para suas vendas."
+    let textButtonString = "Cadastrar chave Pix"
     let bannerImage = UIImage(named: "PixKeyBannerIllustration")
     let errorImage = UIImage(systemName: "photo")
     

@@ -15,8 +15,6 @@
 		D62E059D292BFEFE00E0FEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D62E059C292BFEFE00E0FEEE /* Assets.xcassets */; };
 		D62E05A0292BFEFE00E0FEEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D62E059E292BFEFE00E0FEEE /* LaunchScreen.storyboard */; };
 		D62E05AB292BFEFF00E0FEEE /* App_Prime_NumbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62E05AA292BFEFF00E0FEEE /* App_Prime_NumbersTests.swift */; };
-		D62E05B5292BFEFF00E0FEEE /* App_Prime_NumbersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62E05B4292BFEFF00E0FEEE /* App_Prime_NumbersUITests.swift */; };
-		D62E05B7292BFEFF00E0FEEE /* App_Prime_NumbersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62E05B6292BFEFF00E0FEEE /* App_Prime_NumbersUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +47,6 @@
 		D62E05A6292BFEFF00E0FEEE /* App Prime NumbersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "App Prime NumbersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62E05AA292BFEFF00E0FEEE /* App_Prime_NumbersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_Prime_NumbersTests.swift; sourceTree = "<group>"; };
 		D62E05B0292BFEFF00E0FEEE /* App Prime NumbersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "App Prime NumbersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D62E05B4292BFEFF00E0FEEE /* App_Prime_NumbersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_Prime_NumbersUITests.swift; sourceTree = "<group>"; };
-		D62E05B6292BFEFF00E0FEEE /* App_Prime_NumbersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_Prime_NumbersUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +79,6 @@
 			children = (
 				D62E0592292BFEFA00E0FEEE /* App Prime Numbers */,
 				D62E05A9292BFEFF00E0FEEE /* App Prime NumbersTests */,
-				D62E05B3292BFEFF00E0FEEE /* App Prime NumbersUITests */,
 				D62E0591292BFEFA00E0FEEE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,15 +114,6 @@
 				D62E05AA292BFEFF00E0FEEE /* App_Prime_NumbersTests.swift */,
 			);
 			path = "App Prime NumbersTests";
-			sourceTree = "<group>";
-		};
-		D62E05B3292BFEFF00E0FEEE /* App Prime NumbersUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D62E05B4292BFEFF00E0FEEE /* App_Prime_NumbersUITests.swift */,
-				D62E05B6292BFEFF00E0FEEE /* App_Prime_NumbersUITestsLaunchTests.swift */,
-			);
-			path = "App Prime NumbersUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,8 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D62E05B5292BFEFF00E0FEEE /* App_Prime_NumbersUITests.swift in Sources */,
-				D62E05B7292BFEFF00E0FEEE /* App_Prime_NumbersUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

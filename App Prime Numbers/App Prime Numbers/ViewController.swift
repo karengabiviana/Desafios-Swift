@@ -7,61 +7,72 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
-    let field = UITextField()
-    let submitButton = UIButton()
-    var resultLabel = UILabel()
-    
+protocol ViewProtocol: AnyObject {
+    func show(result: String)
+}
+
+class ViewController: UIViewController, ViewProtocol {
+
     let presenter = Presenter()
-    
+
     var number: Int {
         guard let fieldText = field.text else {
             return 0
         }
-        
-        return Int(fieldText) ?? 0
+
+        return Int.init(fieldText) ?? 0
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configTextField()
-        configSubmit()
-        configResult()
-    }
-    
-    //Configurations
-    func configTextField() {
+
+    let field: UITextField = {
+        let field = UITextField()
         field.textColor = .black
         field.backgroundColor = .white
         field.borderStyle = .line
         field.placeholder = "Put a number here..."
         field.clearButtonMode = .whileEditing
         field.keyboardType = .numberPad
-        view.addSubview(field)
-        
+        return field
+    }()
+
+    let submitButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Submit", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.backgroundColor = .gray
+        button.tintColor = .black
+        button.addTarget(ViewController.self, action: #selector(Presenter.didTapSubmit), for: .allEvents)
+        return button
+    }()
+
+    var resultLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Prime numbers will be here"
+        label.textColor = .black
+        label.textAlignment = .center
+        return label
+    }()
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.view.addSubview(field)
+        self.view.addSubview(submitButton)
+        self.view.addSubview(resultLabel)
+        self.view.clipsToBounds = true
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setConstraintsField()
-    }
-    
-    func configSubmit() {
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        submitButton.backgroundColor = .gray
-        submitButton.tintColor = .black
-        submitButton.addTarget(self, action: #selector(conectThings), for: .allEvents)
-        view.addSubview(submitButton)
-        
         setConstraintsSubmit()
-    }
-    
-    func configResult() {
-        resultLabel.text = "Prime numbers will be here"
-        resultLabel.textColor = .black
-        resultLabel.textAlignment = .center
-        view.addSubview(resultLabel)
-        
         setConstraintsResult()
+    }
+
+    func show(result: String) {
+        //something
     }
     
     //Constraints
@@ -97,19 +108,4 @@ class ViewController: UIViewController {
             resultLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
-    
-    func joinedPrimes(primeList: [Int]) -> String {
-        
-        primeList.map { String($0) }.joined(separator: ", ")
-        
-    }
-    
-    @objc func conectThings() {
-        
-        let primeList = presenter.decomposing(number: number)
-        
-        resultLabel.text = joinedPrimes(primeList: primeList)
-    }
-
 }
-
