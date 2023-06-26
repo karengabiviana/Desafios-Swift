@@ -83,17 +83,17 @@ class Banner: UIStackView {
     func configViews() {
         leadingView.axis = .vertical
         leadingView.distribution = .equalSpacing
-        leadingView.alignment = .center
+        leadingView.alignment = .leading
         leadingView.spacing = CGFloat(spaceSizeMedium)
         leadingView.addArrangedSubview(labelsView)
         leadingView.addArrangedSubview(textButton)
-        
+
         labelsView.axis = .vertical
         labelsView.distribution = .equalSpacing
-        labelsView.alignment = .center
+        labelsView.alignment = .leading
         labelsView.spacing = CGFloat(spaceSizeTiny)
-        leadingView.addArrangedSubview(titleLabel)
-        leadingView.addArrangedSubview(subtitleLabel)
+        labelsView.addArrangedSubview(titleLabel)
+        labelsView.addArrangedSubview(subtitleLabel)
         
     }
     
