@@ -13,7 +13,7 @@ protocol ViewProtocol: AnyObject {
 
 class ViewController: UIViewController, ViewProtocol {
 
-    var presenter: PresenterProtocol
+    let presenter = Presenter()
 
     var number: Int {
         guard let fieldText = field.text else {
@@ -52,10 +52,12 @@ class ViewController: UIViewController, ViewProtocol {
         return label
     }()
 
-    init(presenter: PresenterProtocol) {
-        self.presenter = presenter
+    init() {
         super.init(nibName: nil, bundle: nil)
-
+        self.view.addSubview(field)
+        self.view.addSubview(submitButton)
+        self.view.addSubview(resultLabel)
+        self.view.clipsToBounds = true
     }
 
     required init?(coder: NSCoder) {
