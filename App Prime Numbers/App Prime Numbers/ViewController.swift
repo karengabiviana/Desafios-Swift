@@ -23,28 +23,28 @@ class ViewController: UIViewController, ViewProtocol {
         return Int.init(fieldText) ?? 0
     }
 
-    let field: UITextField = {
+    lazy var field: UITextField = {
         let field = UITextField()
         field.textColor = .black
         field.backgroundColor = .white
         field.borderStyle = .line
         field.placeholder = "Put a number here"
         field.clearButtonMode = .whileEditing
-        field.keyboardType = .numberPad
+        field.addTarget(self, action: #selector(didEditField), for: .touchDown)
         return field
     }()
 
-    let submitButton: UIButton = {
+    lazy var submitButton: UIButton = {
         let button = UIButton()
         button.setTitle("Submit", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.backgroundColor = .gray
         button.tintColor = .black
-        button.addTarget(ViewController.self, action: #selector(Presenter.didTapSubmit), for: .allEvents)
+        button.addTarget(self, action: #selector(didTapSubmit), for: .touchDown)
         return button
     }()
 
-    var resultLabel: UILabel = {
+    lazy var resultLabel: UILabel = {
         let label = UILabel()
         label.text = "Prime numbers will be here"
         label.textColor = .black
@@ -73,10 +73,6 @@ class ViewController: UIViewController, ViewProtocol {
         setConstraintsField()
         setConstraintsSubmit()
         setConstraintsResult()
-    }
-
-    func show(result: String) {
-        //something
     }
     
     //Constraints
@@ -111,5 +107,18 @@ class ViewController: UIViewController, ViewProtocol {
             resultLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
             resultLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+    }
+
+    func show(result: String) {
+        resultLabel.text = result
+    }
+
+    @objc func didEditField() {
+        presenter.didTapSubmit()
+    }
+
+    @objc func didTapSubmit() {
+        presenter.didTapSubmit()
+        show(result: "I am a result")
     }
 }

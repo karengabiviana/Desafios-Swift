@@ -18,7 +18,7 @@ class Presenter: PresenterProtocol {
 
     }
 
-    @objc func didTapSubmit() {
+    func didTapSubmit() {
         // gets number of textfield and convert to Int
         let number = Int(ViewController(presenter: Presenter()).field.text ?? "0") ?? 0
         //  gets the prime factor of the number
