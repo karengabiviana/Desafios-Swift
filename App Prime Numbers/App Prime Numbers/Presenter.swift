@@ -20,15 +20,15 @@ class Presenter: PresenterProtocol {
 
     @objc func didTapSubmit() {
         // gets number of textfield and convert to Int
-        let number = Int(ViewController().field.text ?? "0") ?? 0
+        let number = Int(ViewController(presenter: Presenter()).field.text ?? "0") ?? 0
         //  gets the prime factor of the number
         let result = primeFactors(of: number)
         // gets the arrays of Int and transforme in editaded String
         let strResult = joinedPrimes(primeList: result)
         // shows in screen the result
-        ViewController().resultLabel.text = strResult
+        ViewController(presenter: Presenter()).resultLabel.text = strResult
         // clears the textfield
-        ViewController().field.clearsOnInsertion = true
+        ViewController(presenter: Presenter()).field.clearsOnInsertion = true
 
     }
     // decompoe
