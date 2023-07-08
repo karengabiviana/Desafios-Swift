@@ -54,10 +54,6 @@ class ViewController: UIViewController, ViewProtocol {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.view.addSubview(field)
-        self.view.addSubview(submitButton)
-        self.view.addSubview(resultLabel)
-        self.view.clipsToBounds = true
     }
 
     required init?(coder: NSCoder) {
@@ -66,6 +62,13 @@ class ViewController: UIViewController, ViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.backgroundColor = .white
+
+        view.addSubview(field)
+        view.addSubview(submitButton)
+        view.addSubview(resultLabel)
+
         setConstraintsField()
         setConstraintsSubmit()
         setConstraintsResult()
