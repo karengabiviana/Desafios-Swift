@@ -14,6 +14,8 @@ protocol PresenterProtocol: AnyObject {
 
 class Presenter: PresenterProtocol {
 
+    weak var view: ViewProtocol?
+
     func didEdit(newValue: String) {
 
     }
