@@ -119,6 +119,5 @@ class ViewController: UIViewController, ViewProtocol {
 
     @objc func didTapSubmit() {
         presenter.didTapSubmit()
-        show(result: "I am a result")
     }
 }

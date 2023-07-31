@@ -16,22 +16,24 @@ class Presenter: PresenterProtocol {
 
     weak var view: ViewProtocol?
 
+    var value = ""
+
     func didEdit(newValue: String) {
 
     }
 
     func didTapSubmit() {
         // gets number of textfield and convert to Int
-        let number = Int(ViewController(presenter: Presenter()).field.text ?? "0") ?? 0
+        guard let number = Int(value) else {
+            view?.show(result: "Invalid Value!")
+            return
+        }
         //  gets the prime factor of the number
         let result = primeFactors(of: number)
         // gets the arrays of Int and transforme in editaded String
         let strResult = joinedPrimes(primeList: result)
         // shows in screen the result
-        ViewController(presenter: Presenter()).resultLabel.text = strResult
-        // clears the textfield
-        ViewController(presenter: Presenter()).field.clearsOnInsertion = true
-
+        view?.show(result:strResult)
     }
     // decompoe
     func primeFactors(of number: Int) -> [Int] {
