@@ -30,7 +30,7 @@ class ViewController: UIViewController, ViewProtocol {
         field.borderStyle = .line
         field.placeholder = "Put a number here"
         field.clearButtonMode = .whileEditing
-        field.addTarget(self, action: #selector(didEditField), for: .touchDown)
+        field.addTarget(self, action: #selector(didEditField), for: .editingChanged)
         return field
     }()
 
@@ -114,7 +114,7 @@ class ViewController: UIViewController, ViewProtocol {
     }
 
     @objc func didEditField() {
-        presenter.didTapSubmit()
+        presenter.didEdit(newValue: field.text ?? "")
     }
 
     @objc func didTapSubmit() {

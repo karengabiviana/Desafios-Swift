@@ -19,7 +19,7 @@ class Presenter: PresenterProtocol {
     var value = ""
 
     func didEdit(newValue: String) {
-
+        value = newValue
     }
 
     func didTapSubmit() {
