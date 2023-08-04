@@ -15,6 +15,7 @@ protocol PresenterProtocol: AnyObject {
 class Presenter: PresenterProtocol {
 
     weak var view: ViewProtocol?
+    var useCase: UseCasePrimeNumbersFactorsProtocol?
 
     var value = ""
 
@@ -29,26 +30,13 @@ class Presenter: PresenterProtocol {
             return
         }
         //  gets the prime factor of the number
-        let result = primeFactors(of: number)
+        guard let result = useCase?.primeFactors(of: number) else {
+            view?.show(result: "Error")
+            return }
         // gets the arrays of Int and transforme in editaded String
         let strResult = joinedPrimes(primeList: result)
         // shows in screen the result
         view?.show(result:strResult)
-    }
-    // decompoe
-    func primeFactors(of number: Int) -> [Int] {
-        var factors: [Int] = []
-        var dividend = number
-        var divider = 2
-
-        while dividend > 1 {
-            while dividend % divider == 0 {
-                factors.append(divider)
-                dividend /= divider
-            }
-            divider += 1
-        }
-        return factors
     }
 
     func joinedPrimes(primeList: [Int]) -> String {

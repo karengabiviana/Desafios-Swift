@@ -15,8 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         let presenter = Presenter()
+        let useCase = UseCasePrimeNumbersFactors()
         let viewController = ViewController(presenter: presenter)
         presenter.view = viewController
+        presenter.useCase = useCase
         self.window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }
