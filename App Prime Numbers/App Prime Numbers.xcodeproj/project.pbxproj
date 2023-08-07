@@ -14,6 +14,7 @@
 		D62E059D292BFEFE00E0FEEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D62E059C292BFEFE00E0FEEE /* Assets.xcassets */; };
 		D62E05A0292BFEFE00E0FEEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D62E059E292BFEFE00E0FEEE /* LaunchScreen.storyboard */; };
 		D62E05AB292BFEFF00E0FEEE /* App_Prime_NumbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62E05AA292BFEFF00E0FEEE /* App_Prime_NumbersTests.swift */; };
+		D6FC68232A7D4051008C745E /* UseCasePrimeNumbersFactors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC68222A7D4051008C745E /* UseCasePrimeNumbersFactors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		D62E05A6292BFEFF00E0FEEE /* App Prime NumbersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "App Prime NumbersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62E05AA292BFEFF00E0FEEE /* App_Prime_NumbersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_Prime_NumbersTests.swift; sourceTree = "<group>"; };
 		D62E05B0292BFEFF00E0FEEE /* App Prime NumbersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "App Prime NumbersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6FC68222A7D4051008C745E /* UseCasePrimeNumbersFactors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasePrimeNumbersFactors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				D62E0595292BFEFA00E0FEEE /* SceneDelegate.swift */,
 				D62E0597292BFEFA00E0FEEE /* ViewController.swift */,
 				D61ECB0C292E9D8B0001BCA4 /* Presenter.swift */,
+				D6FC68222A7D4051008C745E /* UseCasePrimeNumbersFactors.swift */,
 				D62E059C292BFEFE00E0FEEE /* Assets.xcassets */,
 				D62E059E292BFEFE00E0FEEE /* LaunchScreen.storyboard */,
 				D62E05A1292BFEFE00E0FEEE /* Info.plist */,
@@ -246,6 +249,7 @@
 				D61ECB0D292E9D8C0001BCA4 /* Presenter.swift in Sources */,
 				D62E0598292BFEFA00E0FEEE /* ViewController.swift in Sources */,
 				D62E0594292BFEFA00E0FEEE /* AppDelegate.swift in Sources */,
+				D6FC68232A7D4051008C745E /* UseCasePrimeNumbersFactors.swift in Sources */,
 				D62E0596292BFEFA00E0FEEE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
